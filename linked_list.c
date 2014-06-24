@@ -74,7 +74,7 @@ void rec_reverse(node_t **head){
 	//Recursive call 
 	rec_reverse(&rest);
 
-	//Put the element at th end
+	//Put the element at the end
 
 	first->next->next= first;
 
@@ -99,6 +99,7 @@ mergesort(node_t **head )
 		{
 			return;
 		}	
+		
 	FrontBackSplitt(tmp_head,&a,&b);
 
 }
@@ -155,9 +156,15 @@ int main(){
 	push(&h,21);
 	push(&h,23);
 	push(&h,25);
-	push(&h,27);
+	push(&h,7);
 	push(&h,30);
-	
+	push(&h,11);
+	push(&h,26);
+	push(&h,3);
+	push(&h,50);
+	push(&h,30);
+
+
 	print(&h);
 	printf("After Reversal : \n");
 	reverse(&h);
