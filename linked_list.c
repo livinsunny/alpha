@@ -102,9 +102,34 @@ mergesort(node_t **head )
 		
 	FrontBackSplitt(tmp_head,&a,&b);
 
+	//Recursive merge the 2 lists;
+	mergesort(&a);
+	mergesort(&a);
+
+	//Merge the 2 list into single 
+
+	*head = sortedMerge(a,b);
+
+
 }
 
 void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
+	
+	//take to pointers slow and fast 
+
+	node_t *slow;
+	node_t *fast;
+
+	if (source == NULL && source - >next == NULL){
+		//length <2 cases
+		*front = source;
+		*back = NULL;
+	}
+	else
+	{
+		
+	}
+
 	return;
 }
 
