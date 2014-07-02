@@ -1,0 +1,5 @@
+{
+	"cmd": ["gcc -o $file_base_name $file && ./$file_base_name"],
+	"path": "your $PATH variable",
+	"shell": true
+}
