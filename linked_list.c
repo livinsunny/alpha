@@ -28,6 +28,8 @@ node_t* mergesort(node_t **head );
 void print(node_t **head);
 void reverse(node_t **head);
 void FrontBackSplitt(node_t *,node_t ** ,node_t**);
+void delete_end(node_t **head);
+
 
 /**
  * Reverse the Linked list
@@ -84,7 +86,7 @@ void rec_reverse(node_t **head){
 	*head = rest; 
 
 }
-
+/*
 //TODO
 //Divide and conquer method
 node_t* 
@@ -112,7 +114,11 @@ mergesort(node_t **head )
 
 
 }
-
+*/
+/*
+ * Splitting the node 
+ *
+ */
 void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
 	
 	//take to pointers slow and fast 
@@ -120,14 +126,30 @@ void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
 	node_t *slow;
 	node_t *fast;
 
-	if (source == NULL && source - >next == NULL){
+	if (source == NULL && source ->next == NULL){
 		//length <2 cases
 		*front = source;
 		*back = NULL;
 	}
 	else
 	{
-		
+		slow = source;
+		fast = source -> next;
+		//Advance the fast node 2 times & slow node to 1 time 
+
+		while(fast != NULL){
+			fast=fast->next;
+			if(fast != NULL){
+				slow = slow -> next;
+				fast=fast->next;
+			}
+		}
+
+		//Now slow pointer is just before the mid point of the list 
+		*front =source;
+		*back = slow -> next;
+		slow->next =NULL;
+
 	}
 
 	return;
@@ -169,9 +191,25 @@ print(node_t **head){
 		temp=temp->next;
 
 	}
+	printf("\n");
 
 }
+void 
+delete_end(node_t **head){
 
+	node_t *temp=*head;
+	node_t *prev;
+
+
+	while(temp->next != NULL){
+
+		prev=temp;
+		temp=temp->next;
+	}
+	printf("Deleting element is %d \n", temp->data);
+	free(temp);
+	prev->next=NULL;
+}
 
 
 int main(){
@@ -197,6 +235,9 @@ int main(){
 
 	printf("After Recursive reverse :\n");
 	rec_reverse(&h);
+	print(&h);
+	delete_end(&h);
+	delete_end(&h);
 	print(&h);
 
 
