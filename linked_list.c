@@ -29,6 +29,7 @@ void print(node_t **head);
 void reverse(node_t **head);
 void FrontBackSplitt(node_t *,node_t ** ,node_t**);
 void delete_end(node_t **head);
+void dup_del(node_t **head);
 
 
 /**
@@ -211,19 +212,51 @@ delete_end(node_t **head){
 	prev->next=NULL;
 }
 
+void
+dup_del(node_t **head){
+
+	node_t *p,*q,*prev,*temp;
+
+	p=prev=*head;
+	q=p->next;
+
+	while(p!=NULL){
+			while(q!=NULL && q->data != p->data){
+				prev=q;
+				q=q->next;
+			}
+			if (q==NULL)
+			{
+				p=p->next;
+				if (p!=NULL)
+				{
+					q=p->next;
+				}
+			}
+			else if (q->data == p->data)
+			{
+				prev->next = q->next;
+				temp = q;
+				q=q->next;
+				free(temp);		
+			}
+		}
+	}
 
 int main(){
 
 	node_t *h=NULL;
 
 	push(&h,21);
+	push(&h,30);
 	push(&h,23);
 	push(&h,25);
 	push(&h,7);
 	push(&h,30);
+	push(&h,30);
 	push(&h,11);
 	push(&h,26);
-	push(&h,3);
+	push(&h,30);
 	push(&h,50);
 	push(&h,30);
 
@@ -236,8 +269,9 @@ int main(){
 	printf("After Recursive reverse :\n");
 	rec_reverse(&h);
 	print(&h);
-	delete_end(&h);
-	delete_end(&h);
+	//delete_end(&h);
+	//delete_end(&h);
+	dup_del(&h);
 	print(&h);
 
 
