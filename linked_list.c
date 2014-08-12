@@ -30,7 +30,7 @@ void reverse(node_t **head);
 void FrontBackSplitt(node_t *,node_t ** ,node_t**);
 void delete_end(node_t **head);
 void dup_del(node_t **head);
-
+void del_n_i_node(node_t **head);
 
 /**
  * Reverse the Linked list
@@ -220,28 +220,58 @@ dup_del(node_t **head){
 	p=prev=*head;
 	q=p->next;
 
-	while(p!=NULL){
-			while(q!=NULL && q->data != p->data){
-				prev=q;
-				q=q->next;
-			}
-			if (q==NULL)
+	while(p!=NULL)
+	{
+		while(q!=NULL && q->data != p->data){
+			prev=q;
+			q=q->next;
+		}
+		if (q==NULL)
+		{
+			p=p->next;
+			if (p!=NULL)
 			{
-				p=p->next;
-				if (p!=NULL)
-				{
-					q=p->next;
-				}
-			}
-			else if (q->data == p->data)
-			{
-				prev->next = q->next;
-				temp = q;
-				q=q->next;
-				free(temp);		
+				q=p->next;
 			}
 		}
+		else if (q->data == p->data)
+		{
+			prev->next = q->next;
+			temp = q;
+			q=q->next;
+			free(temp);		
+		}
 	}
+}
+
+
+void del_n_i_node(node_t **head)
+{
+	node_t *temp=NULL;
+	node_t *slow =*head;
+	node_t *fast = *head;
+	short i=0;
+	/*
+	 *Here 4 is the ith value
+	 */
+
+
+	while(i<4)
+	{
+		fast=fast->next;
+		i++;
+	}
+	while (fast!=NULL){
+		
+		fast=fast->next;
+		temp=slow;
+		slow=slow->next;
+	}
+
+	temp->next=slow->next;
+	free(slow);
+
+}
 
 int main(){
 
@@ -258,20 +288,24 @@ int main(){
 	push(&h,26);
 	push(&h,30);
 	push(&h,50);
-	push(&h,30);
-
+	push(&h,31);
+	//push(&h,32);
+	//push(&h,33);
+	//push(&h,34);
 
 	print(&h);
-	printf("After Reversal : \n");
-	reverse(&h);
-	print(&h);
+	//printf("After Reversal : \n");
+	//reverse(&h);
+	//print(&h);
 
 	printf("After Recursive reverse :\n");
-	rec_reverse(&h);
+	//rec_reverse(&h);
 	print(&h);
 	//delete_end(&h);
 	//delete_end(&h);
 	dup_del(&h);
+	print(&h);
+	del_n_i_node(&h);
 	print(&h);
 
 
