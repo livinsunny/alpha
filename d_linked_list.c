@@ -1,0 +1,6 @@
+
+
+/*
+ *	For Doubly linked list 
+ *
+ */
