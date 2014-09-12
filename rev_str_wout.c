@@ -8,10 +8,10 @@
 void rev(char str[]);
 int main(){
 
-	char str[20]={0};
+	char str[20]={"livin Sunny"};
 
-	printf("enter the string \n ");
-	scanf("%s",str);
+	//printf("enter the string \n ");
+	//scanf("%s",str);
 
 
 	rev(str);
@@ -27,18 +27,19 @@ void rev(char str[]){
 	int i=0;
 	for(i=0;str[i]!='\0';i++);	
 	int count=0;
+	i--;
 	printf("%d",i);
-	while(count< (i))
+	while(count< i)
 	{
 		str[count]^=str[i];
 		str[i]^=str[count];
 		str[count]^=str[i];
 
-		++count;
-		--i;
+		count++;
+		i--;
 	}
 
-/*	
+/*
  int end= strlen(str)-1;
  int start = 0;
 printf("%d",end);
