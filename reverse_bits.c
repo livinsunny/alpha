@@ -14,6 +14,7 @@ int main(){
 		r|=v&1;
 		s--;
 	}
+	
 	r<<=s;
 	printf("%x",r);
 	return 0;
