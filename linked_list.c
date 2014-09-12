@@ -2,7 +2,7 @@
 
 /*
  *	 Linked list problems 
- *	Authour : Livin Sunny
+ *	 Authour : Livin Sunny
  */
 
 
@@ -33,7 +33,8 @@ void dup_del(node_t **head);
 void del_n_i_node(node_t **head);
 
 /**
- * Reverse the Linked list
+ * 
+ *	Reverse the Linked list
  *
  */
 
@@ -269,6 +270,7 @@ void del_n_i_node(node_t **head)
 	}
 
 	temp->next=slow->next;
+	printf("Deleting node  : %d\n",slow->data);
 	free(slow);
 
 }
@@ -299,13 +301,15 @@ int main(){
 	//print(&h);
 
 	printf("After Recursive reverse :\n");
-	//rec_reverse(&h);
+	rec_reverse(&h);
 	print(&h);
 	//delete_end(&h);
 	//delete_end(&h);
 	dup_del(&h);
+	printf("After Dup Deleting \n");
 	print(&h);
 	del_n_i_node(&h);
+	printf("After Deleting ith node \n");
 	print(&h);
 
 
