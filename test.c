@@ -34,7 +34,7 @@ struct tree
 {
 	char *name;
 	int (*funcptr)(char *);
-}node[]={
+}node[2]={
 	{"fun",fun},
 	{"afun",afun},
 };
