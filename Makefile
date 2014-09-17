@@ -1,10 +1,10 @@
 
 
-SRCS = rev_str_wout.c
+SRCS = test2.c
 
 HDRS = 
 
-OBJS = rev_str_wout.o
+OBJS = test2.o
 
 CC = gcc
 
