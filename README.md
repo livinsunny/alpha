@@ -6,4 +6,5 @@ alpha
 =====
 
 * Initial commit started with some of the important problems in c
-* Adding more programs
+* Started adding more functions for Linked list
+* Need more problem to add and practise.
