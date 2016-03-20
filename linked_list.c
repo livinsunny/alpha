@@ -15,12 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
 //#define debug 
-
 
 typedef struct node{
 	
@@ -28,8 +26,6 @@ typedef struct node{
     struct node *next;
 
 }node_t;
-
-static i;
 
 node_t* push(node_t **head,int new_data);
 node_t* mergesort(node_t **head );
@@ -40,12 +36,11 @@ void delete_end(node_t **head);
 void dup_del(node_t **head);
 void del_n_i_node(node_t **head);
 
-/**
+/*
  * 
  * Reverse the Linked list
  *
  */
-
 
 void reverse(node_t **head){
 
@@ -64,7 +59,7 @@ void reverse(node_t **head){
     *head=prev;
 } 
 
-/**
+/*
  * Recursive Reverse the Linked list
  *
  */
@@ -94,7 +89,6 @@ void rec_reverse(node_t **head){
     first->next = NULL;
 
     *head = rest; 
-
 }
 /*
 //TODO
@@ -159,14 +153,10 @@ void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
 	*front =source;
 	*back = slow -> next;
 	slow->next =NULL;
-
     }
 
     return;
 }
-
-
-
 
 node_t* 
 push(node_t **head,int new_data)
@@ -222,8 +212,8 @@ print(node_t **head){
 
     }
     printf("\n");
-
 }
+
 void 
 delete_end(node_t **head){
 
@@ -241,8 +231,8 @@ delete_end(node_t **head){
     prev->next=NULL;
 }
 
-
-void dup_delete(node_t **head){
+void
+dup_delete(node_t **head){
 
     node_t *ptr1,*ptr2,*dup;
 
@@ -300,20 +290,15 @@ dup_del(node_t **head){
     }
 }
 
-
-
-
-void del_n_i_node(node_t **head)
+void
+del_n_i_node(node_t **head)
 {
     node_t *temp=NULL;
     node_t *slow =*head;
     node_t *fast = *head;
     short i=0;
-    /*
-     *Here 4 is the ith value
-     */
-
-
+    
+    //Here 4 is the ith value
     while(i<4)
     {
 	fast=fast->next;
@@ -389,8 +374,7 @@ int main(){
 	    default :
 		printf("Error !! \n");
 	}
-	
-			
+				
     } while (ch!=0);
 
 }
