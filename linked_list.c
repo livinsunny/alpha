@@ -37,9 +37,7 @@ void dup_del(node_t **head);
 void del_n_i_node(node_t **head);
 
 /*
- * 
  * Reverse the Linked list
- *
  */
 
 void reverse(node_t **head){
@@ -61,7 +59,6 @@ void reverse(node_t **head){
 
 /*
  * Recursive Reverse the Linked list
- *
  */
 
 void rec_reverse(node_t **head){
