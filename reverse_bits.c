@@ -8,6 +8,7 @@ int main(){
 	unsigned int r=v;
 
 	int s=sizeof(v)*CHAR_BIT-1;
+    printf( "sizeof %d",sizeof(unsigned int)); 
 	for(v=v>>1;v;v=v>>1)
 	{
 		r<<=1;

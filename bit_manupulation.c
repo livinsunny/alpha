@@ -1,6 +1,4 @@
 
-
-
 #include<stdio.h>
 #define MASK(x) 1<<(x-1)
 
@@ -22,7 +20,8 @@ int modify_bit(int n,unsigned char pos,_Bool new_state){
 
 int isBitset(int n,unsigned int pos)
 {
-	return ((1<<(pos-1))&n)!=0;
+    int mask=MASK(pos);
+	return (mask & n)!=0;
 }
 
 int main()
@@ -34,6 +33,7 @@ int main()
 	scanf("%d",&number);
 	
 	printf("\nEnter your choice :" );
+    printf("1.set bit\n2.Modify a bit\n3.Is bit set\n4.Clear bit");
 	scanf(" %c",&ops);
 
 	printf("\nEnter the position :" );
@@ -43,7 +43,7 @@ int main()
 
 		case '1' :
 				printf("Inside 1\n");
-				return set_bit(number,pos);
+			    printf("After Modification : %d \n",set_bit(number,pos));
 			break;
 		case '2' : 	printf("Inside 2\n");
 				printf("\nEnter the new state :" );

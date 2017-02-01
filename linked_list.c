@@ -21,7 +21,7 @@
 //#define debug 
 
 typedef struct node{
-	
+
     int data;
     struct node *next;
 
@@ -48,10 +48,10 @@ void reverse(node_t **head){
 
     while (current != NULL)
     {
-	next=current->next;
-	current->next=prev;
-	prev = current;
-	current = next;
+        next=current->next;
+        current->next=prev;
+        prev = current;
+        current = next;
     }
 
     *head=prev;
@@ -69,7 +69,7 @@ void rec_reverse(node_t **head){
     //Check if the node has only 1 node 
 
     if(rest == NULL){
-	return ;
+        return ;
     }
 #ifdef debug
     printf("Recursive call : %d \n",i++);
@@ -102,7 +102,7 @@ if (tmp_head==NULL || tmp_head->next)
 {
 return;
 }	
-		
+
 FrontBackSplitt(tmp_head,&a,&b);
 
 //Recursive merge the 2 lists;
@@ -111,51 +111,51 @@ mergesort(&a);
 
 //Merge the 2 list into single 
 
-*head = sortedMerge(a,b);
+ *head = sortedMerge(a,b);
 
 
-}
+ }
 
 /*
-* Splitting the node 
-*
-*/
+ * Splitting the node 
+ *
+ */
 void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
-	
+
     //take to pointers slow and fast 
 
     node_t *slow;
     node_t *fast;
 
     if (source == NULL && source ->next == NULL){
-	//length <2 cases
-	*front = source;
-	*back = NULL;
+        //length <2 cases
+        *front = source;
+        *back = NULL;
     }
     else
     {
-	slow = source;
-	fast = source -> next;
-	//Advance the fast node 2 times & slow node to 1 time 
+        slow = source;
+        fast = source -> next;
+        //Advance the fast node 2 times & slow node to 1 time 
 
-	while(fast != NULL){
-	    fast=fast->next;
-	    if(fast != NULL){
-		slow = slow -> next;
-		fast=fast->next;
-	    }
-	}
+        while(fast != NULL){
+            fast=fast->next;
+            if(fast != NULL){
+                slow = slow -> next;
+                fast=fast->next;
+            }
+        }
 
-	//Now slow pointer is just before the mid point of the list 
-	*front =source;
-	*back = slow -> next;
-	slow->next =NULL;
+        //Now slow pointer is just before the mid point of the list 
+        *front =source;
+        *back = slow -> next;
+        slow->next =NULL;
     }
 
     return;
 }
 
-node_t* 
+    node_t* 
 push(node_t **head,int new_data)
 {
     node_t *new_node = (node_t*)malloc(sizeof(node_t));
@@ -172,17 +172,16 @@ push(node_t **head,int new_data)
 node_t*
 push_end(node_t **head , int new_data) {
     node_t *temp = *head;
-	
+
     node_t *new_node = (node_t*)malloc(sizeof(node_t));
     new_node->data = new_data;
     if(temp==NULL){
-	new_node->data=new_data;
-	new_node->next=*head;
-	*head=new_node;
-	return *head;
+        new_node->next=*head;
+        *head=new_node;
+        return *head;
     }	
     while(temp->next!=NULL){
-	temp=temp->next;
+        temp=temp->next;
     }
 
     temp->next= new_node;
@@ -196,16 +195,16 @@ print(node_t **head){
 
 #ifdef debug
     if(temp==NULL)
-	printf("No head\n");
+        printf("No head\n");
     else
-	printf("Head present\n");
+        printf("Head present\n");
 #endif	
 
     while(temp!=NULL)
     {
 
-	printf("%d\t -> ",temp->data);
-	temp=temp->next;
+        printf("%d -> ",temp->data);
+        temp=temp->next;
 
     }
     printf("\n");
@@ -216,13 +215,25 @@ delete_end(node_t **head){
 
     node_t *temp=*head;
     node_t *prev;
-
+    if(temp==NULL)
+    {
+        printf("list is empty !! Nothing to delete\n");
+        return;
+    }
+    if (temp->next == NULL)
+    {
+        free(temp);
+        *head=NULL;
+        printf("Last item deleted \n");
+        return;
+    }
 
     while(temp->next != NULL){
 
-	prev=temp;
-	temp=temp->next;
+        prev=temp;
+        temp=temp->next;
     }
+
     printf("Deleting element is %d \n", temp->data);
     free(temp);
     prev->next=NULL;
@@ -237,21 +248,21 @@ dup_delete(node_t **head){
 
     while(ptr1!=NULL && ptr1->next!=NULL)
     {
-	ptr2=ptr1;
+        ptr2=ptr1;
 
-	while(ptr2->next != NULL){
-	    if(ptr1->data == ptr2->next->data)
-	    {
-		dup = ptr2->next;
-		ptr2->next = ptr2->next->next;
-		free(dup);
-	    }
-	    else{
-		ptr2=ptr2->next;
-	    }
-	}
-		
-	ptr1=ptr1->next;		
+        while(ptr2->next != NULL){
+            if(ptr1->data == ptr2->next->data)
+            {
+                dup = ptr2->next;
+                ptr2->next = ptr2->next->next;
+                free(dup);
+            }
+            else{
+                ptr2=ptr2->next;
+            }
+        }
+
+        ptr1=ptr1->next;		
     }
 }
 
@@ -265,47 +276,51 @@ dup_del(node_t **head){
 
     while(p!=NULL)
     {
-	while(q!=NULL && q->data != p->data){
-	    prev=q;
-	    q=q->next;
-	}
-	if (q==NULL)
-	{
-	    p=p->next;
-	    if (p!=NULL)
-	    {
-		q=p->next;
-	    }
-	}
-	else if (q->data == p->data)
-	{
-	    prev->next = q->next;
-	    temp = q;
-	    q=q->next;
-	    free(temp);		
-	}
+        while(q!=NULL && q->data != p->data){
+            prev=q;
+            q=q->next;
+        }
+        if (q==NULL)
+        {
+            p=p->next;
+            if (p!=NULL)
+            {
+                q=p->next;
+            }
+        }
+        else if (q->data == p->data)
+        {
+            prev->next = q->next;
+            temp = q;
+            q=q->next;
+            free(temp);		
+        }
     }
 }
 
-void
+    void
 del_n_i_node(node_t **head)
 {
     node_t *temp=NULL;
     node_t *slow =*head;
     node_t *fast = *head;
     short i=0;
-    
+
     //Here 4 is the ith value
     while(i<4)
     {
-	fast=fast->next;
-	i++;
+        if(fast->next == NULL){
+            printf("not enough elements to do operation \n");
+            return;
+        }
+        fast=fast->next;
+        i++;
     }
     while (fast!=NULL){
-		
-	fast=fast->next;
-	temp=slow;
-	slow=slow->next;
+
+        fast=fast->next;
+        temp=slow;
+        slow=slow->next;
     }
 
     temp->next=slow->next;
@@ -315,7 +330,7 @@ del_n_i_node(node_t **head)
 }
 
 int main(){
-    
+
     node_t *h=NULL;
     uint ch=0;
     push_end(&h,21);
@@ -329,49 +344,55 @@ int main(){
     printf("1.Delete ith node\n 2.Reverse \n 3.Recursive Rev \n 4.Delete 5.Print \n 6.Dupe Delete \n");
     do
     {
-	printf("Enter your choice\n");
-	scanf("%d",&ch);
-	if(!ch){
-	    break;
-	}    
-	__fpurge(stdin);
-		
-	switch(ch) {
-	    case 1 : {
-		printf("Delete ith node \n");
-		del_n_i_node(&h);
-		break;
-	    }
-	    case 2 : {
-		printf("Reverse\n");
-		reverse(&h);
-		break;
-	    }
-	    case 3: {
-		printf("recursuve reverse \n");
-		rec_reverse(&h);
-		break;
-	    }
-	    case 4 : {
-		printf("Delete node \n");
-		delete_end(&h);
-		break;
-	    }
-	    case 5:{
-		print(&h);
-		break;
-	    }
-		
-	    
-	    case 6: {
-		printf("Dup Del\n");
-		
-		break;
-	    }
-	    default :
-		printf("Error !! \n");
-	}
-				
+        printf("Enter your choice\n");
+        scanf("%d",&ch);
+        if(!ch){
+            break;
+        }    
+        __fpurge(stdin);
+
+        switch(ch) {
+            case 1 : {
+                         printf("Delete ith node \n");
+                         del_n_i_node(&h);
+                         break;
+                     }
+            case 2 : {
+                         printf("Reverse\n");
+                         reverse(&h);
+                         break;
+                     }
+            case 3: {
+                        printf("recursuve reverse \n");
+                        rec_reverse(&h);
+                        break;
+                    }
+            case 4 : {
+                         printf("Delete node \n");
+                         delete_end(&h);
+                         break;
+                     }
+            case 5:{
+                       print(&h);
+                       break;
+                   }
+
+
+            case 6: {
+                        printf("Dup Del\n");
+
+                        break;
+                    }
+            default :
+                    printf("Error !! \n");
+        }
+
     } while (ch!=0);
+
+    printf("Releasing the memory\n");
+    while(h!=NULL)
+    {
+        delete_end(&h);
+    }
 }
 
