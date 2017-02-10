@@ -18,7 +18,7 @@ int main()
     {
         counter1[str1[i] - 'A']++;
     }
-    
+
     for (i=0;str2[i]!='\0';i++)
     {
         counter2[str2[i] - 'A']++;
