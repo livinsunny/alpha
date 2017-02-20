@@ -23,5 +23,6 @@ int main()
     {
         printf("%d \n",a[pass]);
     }
+    return 0;
 }
 

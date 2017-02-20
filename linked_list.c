@@ -17,8 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-//#define debug 
+//#define debug
 
 typedef struct node{
 
@@ -55,7 +54,7 @@ void reverse(node_t **head){
     }
 
     *head=prev;
-} 
+}
 
 /*
  * Recursive Reverse the Linked list
@@ -66,7 +65,7 @@ void rec_reverse(node_t **head){
     node_t *first= *head;
     node_t *rest = first-> next;
 
-    //Check if the node has only 1 node 
+    //Check if the node has only 1 node
 
     if(rest == NULL){
         return ;
@@ -75,7 +74,7 @@ void rec_reverse(node_t **head){
     printf("Recursive call : %d \n",i++);
 #endif
 
-    //Recursive call 
+    //Recursive call
     rec_reverse(&rest);
 
     //Put the element at the end
@@ -85,12 +84,12 @@ void rec_reverse(node_t **head){
     //tricky step
     first->next = NULL;
 
-    *head = rest; 
+    *head = rest;
 }
 /*
 //TODO
 //Divide and conquer method
-node_t* 
+node_t*
 mergesort(node_t **head )
 {
 node_t *tmp_head=*head;
@@ -101,7 +100,7 @@ node_t *b;
 if (tmp_head==NULL || tmp_head->next)
 {
 return;
-}	
+}
 
 FrontBackSplitt(tmp_head,&a,&b);
 
@@ -109,7 +108,7 @@ FrontBackSplitt(tmp_head,&a,&b);
 mergesort(&a);
 mergesort(&a);
 
-//Merge the 2 list into single 
+//Merge the 2 list into single
 
  *head = sortedMerge(a,b);
 
@@ -117,12 +116,12 @@ mergesort(&a);
  }
 
 /*
- * Splitting the node 
+ * Splitting the node
  *
  */
 void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
 
-    //take to pointers slow and fast 
+    //take to pointers slow and fast
 
     node_t *slow;
     node_t *fast;
@@ -136,7 +135,7 @@ void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
     {
         slow = source;
         fast = source -> next;
-        //Advance the fast node 2 times & slow node to 1 time 
+        //Advance the fast node 2 times & slow node to 1 time
 
         while(fast != NULL){
             fast=fast->next;
@@ -146,7 +145,7 @@ void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
             }
         }
 
-        //Now slow pointer is just before the mid point of the list 
+        //Now slow pointer is just before the mid point of the list
         *front =source;
         *back = slow -> next;
         slow->next =NULL;
@@ -155,7 +154,7 @@ void FrontBackSplitt(node_t *source , node_t **front,node_t **back){
     return;
 }
 
-    node_t* 
+    node_t*
 push(node_t **head,int new_data)
 {
     node_t *new_node = (node_t*)malloc(sizeof(node_t));
@@ -163,9 +162,9 @@ push(node_t **head,int new_data)
     new_node->next=*head;
     *head=new_node;
 
-#ifdef debug	
+#ifdef debug
     printf("Data created : %d\n",new_node->data);
-#endif	
+#endif
 
 }
 
@@ -179,7 +178,7 @@ push_end(node_t **head , int new_data) {
         new_node->next=*head;
         *head=new_node;
         return *head;
-    }	
+    }
     while(temp->next!=NULL){
         temp=temp->next;
     }
@@ -188,7 +187,7 @@ push_end(node_t **head , int new_data) {
     new_node->next = NULL;
 }
 
-void 
+void
 print(node_t **head){
 
     node_t *temp=*head;
@@ -198,7 +197,7 @@ print(node_t **head){
         printf("No head\n");
     else
         printf("Head present\n");
-#endif	
+#endif
 
     while(temp!=NULL)
     {
@@ -210,7 +209,7 @@ print(node_t **head){
     printf("\n");
 }
 
-void 
+void
 delete_end(node_t **head){
 
     node_t *temp=*head;
@@ -262,7 +261,7 @@ dup_delete(node_t **head){
             }
         }
 
-        ptr1=ptr1->next;		
+        ptr1=ptr1->next;
     }
 }
 
@@ -293,7 +292,7 @@ dup_del(node_t **head){
             prev->next = q->next;
             temp = q;
             q=q->next;
-            free(temp);		
+            free(temp);
         }
     }
 }
@@ -348,7 +347,7 @@ int main(){
         scanf("%d",&ch);
         if(!ch){
             break;
-        }    
+        }
         __fpurge(stdin);
 
         switch(ch) {
